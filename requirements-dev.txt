@@ -1,0 +1,15 @@
+# Raspberry Pi Weather Station - Development Requirements for Windows
+
+# Web Interface Dependencies
+flask>=2.0.0
+matplotlib>=3.5.0
+numpy==1.24.3  # Specific version to avoid compatibility issues
+pandas==2.0.3  # Specific version to avoid compatibility issues
+
+# Utilities
+python-dotenv>=0.19.0
+requests>=2.27.0
+
+# Development Tools
+pytest>=7.0.0
+mock>=4.0.0  # For mocking sensor data

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather History - Raspberry Pi Weather Station</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Raspberry Pi Weather Station</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Current Weather</a></li>
+                    <li><a href="/history" class="active">Weather History</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <section class="weather-history">
+                <h2>Weather History</h2>
+                
+                <div class="chart-container">
+                    <h3>Temperature History (24 hours)</h3>
+                    {% if temp_chart %}
+                    <img src="data:image/png;base64,{{ temp_chart }}" alt="Temperature History Chart" class="chart">
+                    {% else %}
+                    <p class="no-data">No temperature data available for the selected period.</p>
+                    {% endif %}
+                </div>
+                
+                <div class="chart-container">
+                    <h3>Humidity History (24 hours)</h3>
+                    {% if humidity_chart %}
+                    <img src="data:image/png;base64,{{ humidity_chart }}" alt="Humidity History Chart" class="chart">
+                    {% else %}
+                    <p class="no-data">No humidity data available for the selected period.</p>
+                    {% endif %}
+                </div>
+                
+                <div class="chart-container">
+                    <h3>Barometric Pressure History (24 hours)</h3>
+                    {% if pressure_chart %}
+                    <img src="data:image/png;base64,{{ pressure_chart }}" alt="Pressure History Chart" class="chart">
+                    {% else %}
+                    <p class="no-data">No pressure data available for the selected period.</p>
+                    {% endif %}
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Raspberry Pi Weather Station | <a href="https://github.com/yourusername/raspberry-pi-weather-station">GitHub</a></p>
+        </footer>
+    </div>
+</body>
+</html>

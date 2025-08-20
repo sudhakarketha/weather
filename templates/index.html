@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raspberry Pi Weather Station</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta http-equiv="refresh" content="60">  <!-- Auto-refresh every 60 seconds -->
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Raspberry Pi Weather Station</h1>
+            <nav>
+                <ul>
+                    <li><a href="/" class="active">Current Weather</a></li>
+                    <li><a href="/history">Weather History</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <section class="current-weather">
+                <h2>Current Weather Conditions</h2>
+                <p class="timestamp">Last updated: {{ current.timestamp }}</p>
+                
+                <div class="weather-grid">
+                    <div class="weather-card">
+                        <h3>Temperature</h3>
+                        <div class="reading temperature">
+                            <span class="value">{{ current.temperature_dht }}</span>
+                            <span class="source">(DHT22)</span>
+                        </div>
+                        <div class="reading temperature">
+                            <span class="value">{{ current.temperature_bmp }}</span>
+                            <span class="source">(BMP280)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="weather-card">
+                        <h3>Humidity</h3>
+                        <div class="reading humidity">
+                            <span class="value">{{ current.humidity }}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="weather-card">
+                        <h3>Barometric Pressure</h3>
+                        <div class="reading pressure">
+                            <span class="value">{{ current.pressure }}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="weather-card">
+                        <h3>Altitude</h3>
+                        <div class="reading altitude">
+                            <span class="value">{{ current.altitude }}</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Raspberry Pi Weather Station | <a href="https://github.com/yourusername/raspberry-pi-weather-station">GitHub</a></p>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+</body>
+</html>
